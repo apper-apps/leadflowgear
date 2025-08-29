@@ -138,6 +138,6 @@ export const selectSidebarOpen = (state) => state.ui.sidebarOpen
 export const selectTheme = (state) => state.ui.theme
 
 // Export types for TypeScript support (if needed later)
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+// export type RootState = ReturnType<typeof store.getState>
+// export type AppDispatch = typeof store.dispatch
 export default store;
