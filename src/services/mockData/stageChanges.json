@@ -1,0 +1,26 @@
+[
+  {
+    "leadId": 1,
+    "fromStage": "cold",
+    "toStage": "hot",
+    "timestamp": 1703097600000
+  },
+  {
+    "leadId": 3,
+    "fromStage": "hot",
+    "toStage": "estimate",
+    "timestamp": 1703011200000
+  },
+  {
+    "leadId": 5,
+    "fromStage": "estimate",
+    "toStage": "closed",
+    "timestamp": 1702924800000
+  },
+  {
+    "leadId": 9,
+    "fromStage": "hot",
+    "toStage": "closed",
+    "timestamp": 1702838400000
+  }
+]

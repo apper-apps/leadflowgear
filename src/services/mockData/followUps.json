@@ -1,0 +1,37 @@
+[
+  {
+    "Id": 1,
+    "leadId": 1,
+    "scheduledDate": 1703270400000,
+    "completed": false,
+    "notes": "Follow up on pricing discussion from last meeting"
+  },
+  {
+    "Id": 2,
+    "leadId": 4,
+    "scheduledDate": 1703184000000,
+    "completed": false,
+    "notes": "Check if they've had time to review the proposal"
+  },
+  {
+    "Id": 3,
+    "leadId": 3,
+    "scheduledDate": 1703356800000,
+    "completed": false,
+    "notes": "Technical requirements clarification call"
+  },
+  {
+    "Id": 4,
+    "leadId": 8,
+    "scheduledDate": 1703097600000,
+    "completed": true,
+    "notes": "Demo completed successfully"
+  },
+  {
+    "Id": 5,
+    "leadId": 7,
+    "scheduledDate": 1703443200000,
+    "completed": false,
+    "notes": "Present marketing automation features"
+  }
+]
