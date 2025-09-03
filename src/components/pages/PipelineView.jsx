@@ -140,9 +140,9 @@ const handleAddProspect = async (prospectData) => {
             <ApperIcon name="UserPlus" className="w-6 h-6 text-primary-600" />
             <h2 className="text-xl font-semibold text-primary-800">Add New Prospect</h2>
           </div>
-          <Button
+<Button
             onClick={() => setShowNewProspectModal(true)}
-            className="leadflow-button bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-medium px-6 py-2"
+            className="leadflow-button bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-black font-medium px-6 py-2"
           >
             <ApperIcon name="Plus" className="w-4 h-4 mr-2" />
             New Prospect
