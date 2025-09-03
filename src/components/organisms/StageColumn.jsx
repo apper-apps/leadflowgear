@@ -12,11 +12,13 @@ const StageColumn = ({
   onDragLeave,
   renderLead 
 }) => {
-  const getStageIcon = (stageKey) => {
+const getStageIcon = (stageKey) => {
     const icons = {
       cold: "Snowflake",
       hot: "Flame",
+      nurturing: "UserCheck",
       estimate: "FileText",
+      negotiating: "Handshake",
       closed: "CheckCircle"
     };
     return icons[stageKey] || "Circle";

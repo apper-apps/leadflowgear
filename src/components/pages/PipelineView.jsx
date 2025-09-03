@@ -8,8 +8,8 @@ import Empty from "@/components/ui/Empty";
 import { leadService } from "@/services/api/leadService";
 import { followUpService } from "@/services/api/followUpService";
 import FollowUpModal from "@/components/organisms/FollowUpModal";
+import NewProspectModal from "@/components/organisms/NewProspectModal";
 import Button from "@/components/atoms/Button";
-import Input from "@/components/atoms/Input";
 import ApperIcon from "@/components/ApperIcon";
 const PipelineView = () => {
 const [leads, setLeads] = useState([]);
@@ -17,8 +17,8 @@ const [leads, setLeads] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [showFollowUpModal, setShowFollowUpModal] = useState(false);
-  const [selectedLead, setSelectedLead] = useState(null);
-  const [linkedInUrl, setLinkedInUrl] = useState("");
+const [selectedLead, setSelectedLead] = useState(null);
+  const [showNewProspectModal, setShowNewProspectModal] = useState(false);
   const [addingLead, setAddingLead] = useState(false);
   const loadData = async () => {
     try {
@@ -80,23 +80,16 @@ const [leads, setLeads] = useState([]);
     }
 };
 
-  const handleAddProspect = async () => {
-    if (!linkedInUrl.trim()) {
-      toast.error("Please enter a LinkedIn URL");
-      return;
-    }
-
-    if (!linkedInUrl.includes("linkedin.com/in/")) {
-      toast.error("Please enter a valid LinkedIn profile URL");
-      return;
-    }
-
+const handleAddProspect = async (prospectData) => {
     try {
       setAddingLead(true);
-      const newLead = await leadService.createFromLinkedIn(linkedInUrl.trim());
+      const newLead = await leadService.create({
+        ...prospectData,
+        stage: "cold"
+      });
       
       setLeads(prev => [newLead, ...prev]);
-      setLinkedInUrl("");
+      setShowNewProspectModal(false);
       toast.success(`${newLead.name} added to pipeline successfully!`);
     } catch (err) {
       console.error("Error adding prospect:", err);
@@ -141,46 +134,34 @@ const [leads, setLeads] = useState([]);
       </div>
 
       {/* LinkedIn Prospect Addition */}
-      <div className="bg-gradient-to-r from-primary-50 to-primary-100 rounded-xl border border-primary-200 p-6">
-        <div className="flex items-center space-x-3 mb-4">
-          <ApperIcon name="UserPlus" className="w-6 h-6 text-primary-600" />
-          <h2 className="text-xl font-semibold text-primary-800">Add New Prospect</h2>
-        </div>
-        <div className="flex space-x-3">
-          <div className="flex-1">
-            <Input
-              type="text"
-              placeholder="Paste LinkedIn profile URL (e.g., https://linkedin.com/in/profile-name)"
-              value={linkedInUrl}
-              onChange={(e) => setLinkedInUrl(e.target.value)}
-              onKeyPress={handleKeyPress}
-              className="leadflow-button"
-              disabled={addingLead}
-            />
+<div className="bg-gradient-to-r from-primary-50 to-primary-100 rounded-xl border border-primary-200 p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center space-x-3">
+            <ApperIcon name="UserPlus" className="w-6 h-6 text-primary-600" />
+            <h2 className="text-xl font-semibold text-primary-800">Add New Prospect</h2>
           </div>
           <Button
-            onClick={handleAddProspect}
-            disabled={addingLead || !linkedInUrl.trim()}
-            className="leadflow-button bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-medium px-6 py-2 min-w-[120px]"
+            onClick={() => setShowNewProspectModal(true)}
+            className="leadflow-button bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-medium px-6 py-2"
           >
-            {addingLead ? (
-              <>
-                <ApperIcon name="Loader" className="w-4 h-4 mr-2 animate-spin" />
-                Adding...
-              </>
-            ) : (
-              <>
-                <ApperIcon name="Plus" className="w-4 h-4 mr-2" />
-                Add Lead
-              </>
-            )}
+            <ApperIcon name="Plus" className="w-4 h-4 mr-2" />
+            New Prospect
           </Button>
         </div>
-        <p className="text-sm text-primary-600 mt-3">
+        <p className="text-sm text-primary-600">
           <ApperIcon name="Info" className="w-4 h-4 inline mr-1" />
-          Prospects will be automatically added to the "Cold Lead" stage and can be moved through the pipeline.
+          Add detailed prospect information including contact details, company info, and more. New prospects start in the "Cold Lead" stage.
         </p>
       </div>
+
+      {showNewProspectModal && (
+        <NewProspectModal
+          isOpen={showNewProspectModal}
+          onClose={() => setShowNewProspectModal(false)}
+          onSubmit={handleAddProspect}
+          loading={addingLead}
+        />
+      )}
 
       <StatsOverview leads={leads} followUps={followUps} />
 

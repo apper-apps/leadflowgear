@@ -8,10 +8,12 @@ const PipelineBoard = ({ leads, onStageChange, onFollowUp, className }) => {
   const [draggedLead, setDraggedLead] = useState(null);
   const [dragOverColumn, setDragOverColumn] = useState(null);
 
-  const stages = [
+const stages = [
     { key: "cold", label: "Cold Lead", color: "from-blue-500 to-blue-600", count: 0 },
     { key: "hot", label: "Hot Lead", color: "from-red-500 to-red-600", count: 0 },
+    { key: "nurturing", label: "Nurturing", color: "from-purple-500 to-purple-600", count: 0 },
     { key: "estimate", label: "Estimate Sent", color: "from-yellow-500 to-yellow-600", count: 0 },
+    { key: "negotiating", label: "Negotiating", color: "from-orange-500 to-orange-600", count: 0 },
     { key: "closed", label: "Deal Closed", color: "from-green-500 to-green-600", count: 0 }
   ];
 

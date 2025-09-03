@@ -97,6 +97,17 @@ body {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
+/* Stage-specific badge colors */
+.badge-nurturing {
+  background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+  color: white;
+}
+
+.badge-negotiating {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: white;
+}
+
 /* LinkedIn integration styles */
 .leadflow-button {
   font-family: 'Inter', system-ui, sans-serif !important;

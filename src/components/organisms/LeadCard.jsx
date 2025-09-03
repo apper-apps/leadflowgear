@@ -24,19 +24,23 @@ const LeadCard = ({
   };
 
   const getStageVariant = (stage) => {
-    const variants = {
+const variants = {
       cold: "cold",
-      hot: "hot", 
+      hot: "hot",
+      nurturing: "nurturing",
       estimate: "estimate",
+      negotiating: "negotiating",
       closed: "closed"
     };
     return variants[stage] || "default";
   };
 
-  const stageActions = [
+const stageActions = [
     { stage: "cold", label: "Mark Cold", icon: "Snowflake" },
     { stage: "hot", label: "Mark Hot", icon: "Flame" },
-    { stage: "estimate", label: "Estimate Sent", icon: "FileText" },
+    { stage: "nurturing", label: "Start Nurturing", icon: "UserCheck" },
+    { stage: "estimate", label: "Send Estimate", icon: "FileText" },
+    { stage: "negotiating", label: "Begin Negotiating", icon: "Handshake" },
     { stage: "closed", label: "Close Deal", icon: "CheckCircle" }
   ];
 

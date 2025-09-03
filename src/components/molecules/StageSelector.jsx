@@ -6,7 +6,9 @@ import { cn } from "@/utils/cn";
 const stages = [
   { key: "cold", label: "Cold Lead", color: "cold", description: "New prospects not contacted yet" },
   { key: "hot", label: "Hot Lead", color: "hot", description: "Interested prospects actively engaging" },
+  { key: "nurturing", label: "Nurturing", color: "nurturing", description: "Building relationships and trust" },
   { key: "estimate", label: "Estimate Sent", color: "estimate", description: "Proposals sent, waiting for response" },
+  { key: "negotiating", label: "Negotiating", color: "negotiating", description: "Discussing terms and finalizing details" },
   { key: "closed", label: "Deal Closed", color: "closed", description: "Successfully converted customers" }
 ];
 
